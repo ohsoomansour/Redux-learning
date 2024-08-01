@@ -1,23 +1,24 @@
 import { useState } from "react"
 import { connect } from "react-redux";
-import { actionCreators, addToDo } from "./store";
+import { actionCreators } from "./store";
 import  ToDo  from "../components/ToDo";
 
 function Home ({toDos, addToDo}) {
+    console.log(toDos, addToDo);
     const [text, setText] = useState("");
     const onChange = (e) => {
         setText(e.target.value);
     }    
     const onSubmit = (e) => {
         e.preventDefault();
-        addToDo(text)    
+        addToDo(text); //*이벤트 처리 요청: dispatch가 반환 값(=addToDo) -> action은 addToDo함수가 반환한 type의 "ADD"
         setText("");
     }
     return (
      <div>
         <h1>To Do</h1>
         <form onSubmit={onSubmit}>
-            <input type="text" value={text}  onChange={(e) => onChange(e)}/>
+            <input type="text" value={text}  onChange={(e) => onChange(e)} />
             <button >Add</button>
         </form>
         <ul>
@@ -33,7 +34,7 @@ function Home ({toDos, addToDo}) {
 /** 
  * @mapStateProps 함수 : 
  *  - 개념: Redux의 스토어 상태를 컴포넌트의 props로 매핑하는 역할 
- *  - param: 첫 번째 인자, 여기서 state는  Redux 스토어의 state를 의미(=Provider 컴포넌트 store 속성 값 상속 받음) 
+ *  - param: 첫 번째 인자, 여기서 state는  'Redux 스토어의 state를 의미'(=Provider 컴포넌트 store 속성 값 상속 받음) 
  *                         mapStateProps함수는 '필요한 부분을 선택'(= state 또는 ownProps) ->  props로 전달
  *                       두 번째 인자(=ownProps), 'compont의 props'에서 왔다. 
  * 
@@ -46,16 +47,15 @@ function Home ({toDos, addToDo}) {
  */
 
 function mapStateToProps(state, ownProps){
-    return {toDos: state}; 
+    return {toDos: state};  //store.js에서 const store = createStore(reducer) 반환 값 
  }
 
 /**
  *@mapDispatchToProps : Home 컴포넌트의 props로 디스패치 전달 
 */
 function mapDispatchToProps(dispatch) {
-    /* */
     return {
-        addToDo: text => dispatch(actionCreators.addToDo(text))
+        addToDo: text => dispatch(actionCreators.addToDo(text)) // {type: ADD, text } 
     }     
 }
 

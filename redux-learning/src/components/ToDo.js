@@ -14,9 +14,8 @@ function ToDo({text, onBtnClick}) {
     )
 }
 
-// ownProp는 store의 state 값 
+// ownProp는 store의 state 값
 function mapDispatchToProps(dispatch, ownProps){
-    console.log("ownProps", ownProps)
     return {
         onBtnClick: () => dispatch(actionCreators.deleteToDo(ownProps.id))
     }

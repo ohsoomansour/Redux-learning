@@ -3,7 +3,7 @@
  * @Action : 앱에서 store에 운반할 데이터 (액션은 자바스크립트 객체 형식이고 '주문서' 역할) 
  * @Reducer : Action - Reducter, 액션=주문을 보고 Store상태를 업데이트(data를 변경) - Store  
    - createStore : 함수 형태 필수이고  reducer 주기 요구
-
+ * @dispatch : 'reducer를 호출'한다.  
  * @store : store가 하는 일은 기본적으로 data를 넣을 수 있는 장소를 생성
  * @createStore :  
  * @const countStore = createStore(reducer): 의 결과
