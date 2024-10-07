@@ -2,6 +2,8 @@ import { useState } from "react"
 import { connect } from "react-redux";
 import { actionCreators } from "./store";
 import  ToDo  from "../components/ToDo";
+// ==== 10.7 git rest --hard Test ====
+
 
 function Home ({toDos, addToDo}) {
     console.log(toDos, addToDo);
