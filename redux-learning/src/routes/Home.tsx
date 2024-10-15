@@ -1,15 +1,30 @@
 import { useState } from "react"
 import { connect } from "react-redux";
+
 import { actionCreators } from "./store";
 import  ToDo  from "../components/ToDo";
 
-function Home ({toDos, addToDo}) {
+/** 
+ *@since: 24.10.15 수정 
+ *@description: vanilla js -> React redux 사용
+ *@d
+ */
+
+interface IHome{
+    toDos:string;
+    addToDo: {
+        
+    }
+}
+
+
+function Home ({toDos, addToDo} : IHome) {
     console.log(toDos, addToDo);
     const [text, setText] = useState("");
-    const onChange = (e) => {
+    const onChange = (e:any) => {
         setText(e.target.value);
     }    
-    const onSubmit = (e) => {
+    const onSubmit = (e:any) => {
         e.preventDefault();
         addToDo(text); //*이벤트 처리 요청: dispatch가 반환 값(=addToDo) -> action은 addToDo함수가 반환한 type의 "ADD"
         setText("");
@@ -55,7 +70,7 @@ function mapStateToProps(state, ownProps){
 */
 function mapDispatchToProps(dispatch) {
     return {
-        addToDo: text => dispatch(actionCreators.addToDo(text)) // {type: ADD, text } 
+        addToDo: (text:string) => dispatch(actionCreators.addToDo(text)) // {type: ADD, text } 
     }     
 }
 

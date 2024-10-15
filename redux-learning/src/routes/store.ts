@@ -3,21 +3,21 @@ import {legacy_createStore as createStore} from "redux";
 const ADD = "ADD";
 const DELETE = "DELETE";
 
-const addToDo = text => {
+const addToDo = (text:string) => {
     return {
       type: ADD,
       text
     };
   };
   
-const deleteToDo = id => {
+const deleteToDo = (id:string) => {
     return {
       type: DELETE,
       id: parseInt(id)
     };
   };
   
-const reducer = (state = ["Testing"], action) => {
+const reducer = (state = ["Testing"], action:any) => {
     switch(action.type){
         case ADD:
             return [{text: action.text, id: Date.now() }, ...state ]

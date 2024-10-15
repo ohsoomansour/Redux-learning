@@ -1,9 +1,7 @@
-import React from 'react';
-import App from './components/App';
+
 import {createRoot} from "react-dom/client";
-import {ReactDOM} from "react-dom";
-import {Provider} from "react-redux";
 import store from './routes/store';
+
 /*
 ReactDOM.render(
   <App></App>,
