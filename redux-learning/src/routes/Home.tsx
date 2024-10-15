@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { actionCreators } from "./store";
 import  ToDo  from "../components/ToDo";
+// ==== 10.7 git rest --hard Test ====
+
 
 /** 
  *@since: 24.10.15 수정 
